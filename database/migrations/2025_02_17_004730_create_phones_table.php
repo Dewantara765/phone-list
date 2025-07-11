@@ -42,6 +42,8 @@ return new class extends Migration
             $table->String('charging');
             $table->String('harga')->nullable();
         });
+
+      
     }
 
     /**

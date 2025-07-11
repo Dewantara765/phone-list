@@ -4,8 +4,8 @@ import Button from './Components/Button.vue'
 <template>
 <div>
     <Head :title="` | ${$page.component} List`"/>
-    <p class="text-xl font-bold">List Brand</p>
-    <div class="block w-2xl m-3 p-3 flex flex-row justify-start flex-wrap">
+    <p class="text-xl font-bold sm:hidden md:hidden lg:block">List Brand</p>
+    <div class="block w-md m-1 p-2 flex flex-row justify-start flex-wrap">
         <Button nama="Samsung"></Button>
         <Button nama="Xiaomi"></Button>
         <Button nama="Apple"></Button>
@@ -23,6 +23,7 @@ import Button from './Components/Button.vue'
         <Button nama="Sony"></Button>
         <Button nama="Google"></Button>
         <Button nama="Oneplus"></Button>
+        <Button nama="Meizu"></Button>
     </div>
     
 </div>

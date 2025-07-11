@@ -1,4 +1,5 @@
 <script setup>
+import PhoneRow from './PhoneRow.vue'; 
 const props = defineProps({
     phone1: {
         type: Object

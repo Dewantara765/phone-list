@@ -1,34 +1,61 @@
 <script setup>
 import Layout from '../Layouts/Layout.vue';
 import Pagination from './Components/Pagination.vue'
-import { computed } from 'vue';
-import { usePage } from '@inertiajs/vue3';
+import { computed, ref,  watch } from 'vue';
+import { router, usePage } from '@inertiajs/vue3';
+
 
 const props = defineProps({
     phones : Object,
-    keyword : String,
+    filters: Object,
     brand : String,
     
 });
 
+const filters = ref('');
+
+watch(filters, (value) => {
+    setTimeout(() => {
+        router.get('/search', { q: value }, { preserveState: true});   
+    })
+    
+}, 300)
+
 const user = computed(() => usePage().props.user);
+
+  function subtractStrings(str1, str2) {
+      let arr1 = str1.split('');
+      let arr2 = str2.split('');
+      let result = arr1.filter((char, index) => char !== arr2[index]);
+      return result.join('');
+    }
+
 
 </script>
 <template>
      <div>
-       
+      
+           <input type="text" 
+            v-model="filters"
+            placeholder="Search..." 
+            class="px-4 py-2 border rounded-md"/>
+             <Link v-if="user" :href="route('phones.create')" class="bg-sky-500 p-3 m-6 rounded-md text-white">Tambah data</Link>
+     
+           
             <Head v-if="brand" :title="` | All ${props.brand} phones`"/>
             <Head v-else :title="` | ${$page.component}`"/>
     
-          <Link v-if="user" :href="route('phones.create')" class="bg-sky-500 p-3 m-6 rounded-md text-white">Tambah data</Link>
+         
 
           <p v-if="keyword" class="m-3 p-2">Menampilkan hasil untuk <b>{{ props.keyword }}</b></p>
           <div class="relative text-align-center text-red-500 font-bold flex justify-center" v-if="brand">
             <img :src="/image/+'brand/' + props.brand+'.jpg'" class="m-3 p-2 h-[400px] border-black border-2"/>
             <div class="absolute bottom-20 sm:left-20 lg:left-150 text-2xl" style="text-shadow: 1px 1px 2px black;">All {{ props.brand }} phones </div>
-          </div>          
-     
+          </div>
+
+          <p v-if="filters">Menampilkan hasil untuk <b>{{ filters }}</b></p>
         <div class="flex flex-row flex-wrap justify-center">
+          
            <div v-for="phone in props.phones.data" :key="phone.id">
             <div class="max-w-lg rounded overflow-hidden shadow-lg mx-6 p-3">
                 <Link :href="route('phones.show', {'slug': phone.slug})">
@@ -37,7 +64,8 @@ const user = computed(() => usePage().props.user);
                
                 
             <div class="m-3">
-                <p class="text-base text-blue-700 decoration-none font-bold">{{phone.nama}}</p>
+                <p class="text-base text-blue-700 decoration-none font-bold" v-if="brand">{{ subtractStrings(phone.nama, props.brand) }}</p>
+                <p class="text-base text-blue-700 decoration-none font-bold" v-else>{{phone.nama}}</p>
                 
             </div>
                 </Link> 

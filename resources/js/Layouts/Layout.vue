@@ -1,10 +1,13 @@
 <script setup>
 import { useForm, usePage } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
-
+import LayoutButton from '../Pages/Components/LayoutButton.vue';
+import { router } from '@inertiajs/vue3';
+import debounce from 'lodash/debounce';
 
  const props = defineProps({
     active : String,
+  
  })
 
 
@@ -23,34 +26,30 @@ import { ref, computed } from 'vue';
     'font-semibold md:text-white' : props.active != "compare"
  }))
 
- const formSearch = useForm({
-    keyword: null,
- })
+
 
  const data_results3 = ref([]);
 
- const search = () => {
-    formSearch.get(route("phones.search"))
-    
- }
+
 
  const logout = () => {
-     formSearch.post(route("logout"))
+     form.post(route('logout'))
  }
 
 const user = computed(() => usePage().props.user);
 const isMenuOpen = ref(false);
-
-console.log(user)
+const form = useForm();
 
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
 };
 
+
+
 </script>
 <template>
 <div class="bg-indigo-600">
-        <nav class="container px-5 py-3 md:flex md:justify-center space-x-6 md:items-center">
+        <nav class="container px-5 py-3 md:flex md:justify-center space-x-4 md:items-center">
             <div class="flex items-center justify-between">
                 <router-link to="/" class="text-xl font-bold text-gray-100 md:text-2xl hover:text-indigo-400">Phone List
                 </router-link>
@@ -71,14 +70,17 @@ const toggleMenu = () => {
             <div :class="isMenuOpen ? 'flex' : 'hidden'"
                 class="flex-col space-y-0 md:flex  md:flex-row md:items-center md:space-x-6 md:mt-0 me-auto">
                 <Link :href="route('phones.index')" class=" text-indigo-500 block py-2 px-3 rounded bg-white md:bg-indigo-600" :class="activeNavHome">Home</Link>
-                <Link :href="route('phones.brand')" class="text-indigo-500 block py-2 px-3 rounded bg-white md:bg-indigo-600" :class="activeNavBrand">Brand</Link>
                 <Link :href="route('phones.compare')" class="text-indigo-500 block py-2 px-3 rounded bg-white md:bg-indigo-600" :class="activeNavCompare">Compare</Link>
+              
             </div>
-            <div class="flex flex-col  md:flex md:flex-row md:space-x-6">
-                <form @submit.prevent="search" class="flex items-center">
+           
+            
+            <div class="flex flex-col  md:flex md:flex-row md:space-x-4">
+                <!-- <form @submit.prevent="search" class="flex items-center">
                     <input v-model="formSearch.keyword" type="text" placeholder="Search..." class="px-4 py-2 rounded-l-md" />
                     <button type="submit" class="px-4 py-2 bg-yellow-300 text-black rounded-r-md">Cari</button>
-                </form>
+                </form> -->
+                
                     <div v-if="user">
                         <form @submit.prevent="logout" class="flex gap-2 items-center my-2 mx-4">
                             <p class="text-white">{{ user.username }}</p>

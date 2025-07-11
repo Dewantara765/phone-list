@@ -112,8 +112,10 @@ const submit = () => {
                   <input type="text" id="os" name="os" v-model="form.os">
                 </div>
                 <div class="mb-3">
-                  <label for="soc" class="inline-block w-40">SoC</label>
-                  <input type="text" id="soc" name="soc" v-model="form.soc">
+                  <div class="flex flex-row items-center">
+                    <label for="soc" class="inline-block w-40">SoC</label>
+                    <textarea id="soc" name="soc" cols="40" rows="5" wrap="hard" v-model="form.soc"></textarea>
+                  </div>
                 </div>
                 <div class="mb-3">
                   <div class="flex flex-row items-center">

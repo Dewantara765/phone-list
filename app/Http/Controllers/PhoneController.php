@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Phone;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -94,11 +95,19 @@ class PhoneController extends Controller
      */
     public function show(Phone $phone)
     {
+         $comments = $phone->comments()->with('user')->latest()->get();
         return Inertia::render(
             'View',
             [
                 'phone' => $phone,
-                'active' => 'brand',
+                'phoneId' => $phone->id,
+                'likedByUser' => auth()->check() ? $phone->isLikedBy(auth()->user()) : false,
+                'likeCountInitial' => $phone->likes()->count(),
+                'authUser' => auth()->user(),
+                'comments' => $comments,
+                
+               
+                
                 
             ]
         );//
@@ -195,17 +204,23 @@ class PhoneController extends Controller
     }
 
     public function search(Request $request){
-        if ($request->has('keyword')) {
+         $q = $request->input('q');
+        
+        $phones = Phone::when($q, function ($query, $q) {
+            $query->where('nama', 'like', '%' . $q . '%')
+            ->orderBy('updated_at', 'desc')
+            ->orderBy('id','desc');
+        })->paginate(5)->onEachSide(1)->withQueryString();
+
+        if(empty($q)){
             $phones = Phone::select("*")
-            ->where('phones.nama','like','%'. $request->keyword . '%')
-            ->paginate(5)->onEachSide(1);
-        } else {
-            $phones = Phone::select("*")->orderBy('id','desc')->paginate(5)->onEachSide(1);
+            ->orderBy('updated_at', 'desc')
+            ->orderBy('id','desc')->paginate(5)->onEachSide(1);
         }
 
         return Inertia::render('Home',[
             'phones' => $phones,
-            'keyword' => $request->keyword,
+            'filters' => $request->only('q'),
             'active' => 'home',
         ]);
     }
@@ -262,7 +277,27 @@ class PhoneController extends Controller
 
         return response()->json($data1);
 
+
     }
+
+   
+
+    // public function like(Phone $phone)
+    // {
+    //     $phone->likes()->firstOrCreate([
+    //         'user_id' => auth()->id(),
+    //     ]);
+
+    //     return back(); // atau return inertia response
+    // }
+
+    // public function unlike(Phone $phone)
+    // {
+    //     $phone->likes()->where('user_id', auth()->id())->delete();
+
+    //     return back();
+    // }
+
 
     
  

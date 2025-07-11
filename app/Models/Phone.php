@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Like;
+use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 
 class Phone extends Model
@@ -11,4 +14,19 @@ class Phone extends Model
     'kameratelephoto','kameraperiscope','makro','depth','kameradepan','videobelakang', 'videodepan','speaker',
     'audiojack','konektivitas','sensor','baterai','charging','harga'];
         protected $guarded = ['id'] ;//
+    
+        public function likes()
+        {
+            return $this->hasMany(Like::class);
+        }
+
+        public function isLikedBy(User $user)
+        {
+            return $this->likes()->where('user_id', $user->id)->exists();
+        }
+
+        public function comments()
+        {
+            return $this->hasMany(Comment::class)->latest();
+        }
 }

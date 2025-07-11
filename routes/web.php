@@ -3,9 +3,11 @@
 use Inertia\Inertia;
 use App\Models\Phone;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CommentController;
 
 // Route::inertia('/','Home')->name('home');
 
@@ -21,11 +23,11 @@ Route::inertia('/about', 'About', ['user' => 'Dewantara'])->name('about');
 
 Route::get('/search', [PhoneController::class, 'search'])->name('phones.search');
 
-Route::get('/brand', function(){
-    return Inertia::render('Brand',[
-        'active' => 'brand',
-    ]);
-})->name('phones.brand');
+// Route::get('/brand', function(){
+//     return Inertia::render('Brand',[
+//         'active' => 'brand',
+//     ]);
+// })->name('phones.brand');
 
 Route::get('/brand/{brand}', function (String $brand) {
     $phones = Phone::where('brand', $brand )->orderBy('id','desc')->paginate(10)->onEachSide(1);
@@ -71,6 +73,10 @@ Route::put('/phones/{phone}', [PhoneController::class,'update'])
 Route::delete('/phone/{phone}', [PhoneController::class,'destroy'])
     ->name('phones.destroy')->middleware('auth');
 
+Route::post('/phones/{phone}/comments', [CommentController::class, 'store'])->name('phones.comments.store')->middleware('auth');
+
 
 Route::post('/add',[PhoneController::class, 'store'])->name('phones.store')->middleware('auth');
+
+Route::post('/phones/{phone}/like', [LikeController::class, 'toggle'])->middleware('auth');
 
