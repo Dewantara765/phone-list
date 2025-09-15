@@ -6,9 +6,11 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Phone;
+ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CommentController extends Controller
 {
+    use AuthorizesRequests;
     public function index()
 {
     $comments = Comment::with('user')->latest()->get();
@@ -29,6 +31,15 @@ public function store(Request $request, Phone $phone)
     ]);
 
     return redirect()->back();
+}
+
+public function destroy(Comment $comment)
+{
+    $this->authorize('delete', $comment);
+
+    $comment->delete();
+
+    return back();
 }
 
 

@@ -19,6 +19,8 @@
         "@tailwindcss/vite": "^4.0.6",
         "@vitejs/plugin-vue": "^5.2.1",
         "diff": "^8.0.2",
+        "laravel-echo": "^2.1.7",
+        "pusher-js": "^8.4.0",
         "vue-router": "^4.5.0"
     }
 }

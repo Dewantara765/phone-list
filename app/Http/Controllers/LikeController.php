@@ -4,27 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\Phone;
 use Illuminate\Http\Request;
+use App\Events\PhoneLiked;
 
 class LikeController extends Controller
 {
     public function toggle(Phone $phone)
     {
+     
         $user = auth()->user();
    
         $like = $phone->likes()->where('user_id', $user->id)->first();
 
         if ($like) {
-            $like->delete();
-            $liked = false;
+        $like->delete();
+        $liked=false;
         } else {
             $phone->likes()->create(['user_id' => $user->id]);
-            $liked = true;
+            $liked=true;
         }
+
+        $likeCount = $phone->likes()->count();
+        broadcast(new PhoneLiked($phone->id, $likeCount))->toOthers();
         
         return response()->json([
-            'liked' => $liked,
-            'like_count' => $phone->likes()->count(),
-        ]);
+        'liked' => $liked,
+        'like_count' => $phone->likes()->count(),
+    ]);
 
        
 

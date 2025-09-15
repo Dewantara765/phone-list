@@ -54,7 +54,7 @@ const toggleMenu = () => {
                 <router-link to="/" class="text-xl font-bold text-gray-100 md:text-2xl hover:text-indigo-400">Phone List
                 </router-link>
                 <!-- Mobile menu button -->
-                <div @click="toggleMenu" class="flex md:hidden">
+                <div @click="toggleMenu()" class="flex md:hidden">
                     <button type="button"
                         class="text-gray-100 hover:text-gray-400 focus:outline-none focus:text-gray-400">
                         <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">

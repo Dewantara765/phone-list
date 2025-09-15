@@ -5,6 +5,12 @@ import tailwindcss from '@tailwindcss/vite'
 
 
 export default defineConfig({
+     server: {
+    host: '0.0.0.0',
+    hmr: {
+      host: '192.168.1.7', // your local IP
+    },
+  },
     plugins: [
         vue(),
         tailwindcss(),
@@ -13,4 +19,5 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    
 });

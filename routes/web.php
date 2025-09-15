@@ -80,3 +80,6 @@ Route::post('/add',[PhoneController::class, 'store'])->name('phones.store')->mid
 
 Route::post('/phones/{phone}/like', [LikeController::class, 'toggle'])->middleware('auth');
 
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('comments.destroy');
