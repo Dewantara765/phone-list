@@ -126,13 +126,14 @@ function highlightDiff(str1, str2) {
      <Head :title="` | ${$page.component}`"/>
         <div class="flex justify-center">
          
-            <p class="text-md font-semibold m-3" v-if="props.dataphone1.length == 0">Tidak ada data...</p>
+            <p class="text-md font-semibold m-3" v-if="props.dataphone1.length == 0">Tidak ada data...</p> -->
            <PhoneData v-for="phone1 in props.dataphone1" :key="phone1.id" :phone1="phone1"/>
            
            
         <p class="text-md font-semibold m-3" v-if="props.dataphone2.length == 0">Tidak ada data...</p>
            <PhoneData v-for="phone2 in props.dataphone2" :key="phone2.id" :phone1="phone2"/>
            
+   
 
            
           

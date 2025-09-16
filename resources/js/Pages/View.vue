@@ -45,25 +45,23 @@ const deletePhone = (id) => {
 
 const user = computed(() => usePage().props.user);
 
-const toggleLike = () => {
+const toggleLike = async () => {
    if (!props.authUser) {
     alert('Please log in to like this post.')
     return
   }
 
- form.submit('post', `/phones/${props.phoneId}/like`, {
-    preserveScroll: true,
-    forceFormData: false, // important for JSON response
-    onSuccess: () => {
-      // Note: when using `submit` with JSON, the result is in `form.response`
-      const response = form.response?.data
-      liked.value = response.liked
-      likeCount.value = response.like_count
-    },
-    onError: (errors) => {
-      console.error(errors)
-    },
-  })
+  try {
+    const res = await axios.post(`/phones/${props.phoneId}/like`)
+    liked.value = res.data.liked
+    likeCount.value = res.data.like_count
+  } catch (err) {
+    if (err.response?.status === 401) {
+      alert('Please log in first!')
+    } else {
+      console.error(err)
+    }
+  }
 }
 
 function submitComment() {
@@ -74,20 +72,21 @@ function submitComment() {
 }
 
 onMounted(() => {
-  window.Echo.channel(`phone.${props.postId}`)
+  window.Echo.channel(`phone.${props.phoneId}`)
     .listen('PhoneLiked', (e) => {
       likeCount.value = e.likeCount
     })
 })
 
 onUnmounted(() => {
-  window.Echo.leave(`phone.${props.postId}`)
+  window.Echo.leave(`phone.${props.phoneId}`)
 })
 
 </script>
 <template>
+  <Head :title="`| ${props.phone.nama}`"/> 
 <div class="flex flex-col lg:flex-row">
-    <Head :title="`| ${props.phone.nama}`"/>  
+     
       <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border me-auto mb-6 p-1">
          
                           <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
@@ -153,7 +152,7 @@ onUnmounted(() => {
           <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border p-2">
      
        
-            <p class="font-bold sm:text-xl md:text-2xl text-red-500">Komentar</p>
+            <p class="font-bold text-xl md:text-2xl text-red-500">Komentar</p>
             <div v-if="authUser">
               <CommentForm :phone-id="phoneId"/>                     
             </div>

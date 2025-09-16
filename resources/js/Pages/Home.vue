@@ -34,13 +34,13 @@ const user = computed(() => usePage().props.user);
 </script>
 <template>
      <div>
-      
+        <div class="flex flex-col">
            <input type="text" 
             v-model="filters"
             placeholder="Search..." 
-            class="px-4 py-2 border rounded-md"/>
-             <Link v-if="user" :href="route('phones.create')" class="bg-sky-500 p-3 m-6 rounded-md text-white">Tambah data</Link>
-     
+            class="px-4 py-2 border rounded-md w-70"/>
+             <Link v-if="user" :href="route('phones.create')" class="bg-sky-500 p-3 m-3 rounded-md text-white w-30">Tambah data</Link>
+        </div>
            
             <Head v-if="brand" :title="` | All ${props.brand} phones`"/>
             <Head v-else :title="` | ${$page.component}`"/>

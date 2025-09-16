@@ -183,7 +183,7 @@ function previewImage(e) {
                   </div>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex row items-center">
+                  <div class="flex flex-row items-center">
                     <label for="videodepan" class="inline-block w-40">Video Depan</label>
                     <textarea id="videodepan" name="videodepan" required cols="40" rows="5" wrap="hard" v-model="form.videodepan"></textarea>
                   </div>
@@ -197,7 +197,7 @@ function previewImage(e) {
                   <input type="text" id="audiojack" name="audiojack" required v-model="form.audiojack">
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex row items-center">
+                  <div class="flex flex-row items-center">
                     <label for="konektivitas" class="inline-block w-40">Konektivitas</label>
                     <textarea id="konektivitas" name="konektivitas" required cols="40" rows="5" wrap="hard" v-model="form.konektivitas"></textarea>
                   </div>

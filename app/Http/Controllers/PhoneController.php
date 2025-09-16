@@ -96,6 +96,7 @@ class PhoneController extends Controller
     public function show(Phone $phone)
     {
          $comments = $phone->comments()->with('user')->latest()->get();
+         
         return Inertia::render(
             'View',
             [

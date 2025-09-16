@@ -23,8 +23,8 @@ function submitComment() {
 <template>
     <div>
       
-     <form @submit.prevent="submitComment" class="mb-6">
-                      <textarea v-model="form2.body" class="w-3/4 border p-2 rounded" placeholder="Tulis komentar..."></textarea>
+     <form @submit.prevent="submitComment" class="mb-6  flex items-center">
+                      <textarea v-model="form2.body" class="w-3/4 h-30 border p-2 rounded" placeholder="Tulis komentar..."></textarea>
                       <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded" :disabled="form2.processing">Kirim</button>
       </form>
     </div>
