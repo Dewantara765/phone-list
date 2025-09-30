@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
     <div>
-         <div class="w-40 md:w-90 lg:w-110 xl:140 2xl:180 3xl:230 rounded overflow-hidden border-gray-600 border m-6 p-1">
+         <div class="w-40 md:w-90 lg:w-110 xl:140 2xl:180 3xl:230 rounded overflow-hidden border-gray-600 border m-3 p-1">
                 <h4 class="font-bold text-lg lg:text-xl text-red-500 text-center">{{ phone1.nama }}</h4>
                 <div class="flex justify-center">
                     <img :src="/image/ + phone1.gambar" style="width:40%; margin:5px;"> 

@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { router } from '@inertiajs/vue3';
 import axios from 'axios';
 import { useForm, usePage} from '@inertiajs/vue3';
 import { computed } from 'vue';
@@ -71,23 +72,20 @@ function submitComment() {
   })
 }
 
-onMounted(() => {
-  window.Echo.channel(`phone.${props.phoneId}`)
-    .listen('PhoneLiked', (e) => {
-      likeCount.value = e.likeCount
-    })
-})
 
-onUnmounted(() => {
-  window.Echo.leave(`phone.${props.phoneId}`)
-})
+
+function goTo(url) {
+  if (url) {
+    router.get(url, {}, { preserveScroll: true, preserveState: true })
+  }
+}
 
 </script>
 <template>
-  <Head :title="`| ${props.phone.nama}`"/> 
-<div class="flex flex-col lg:flex-row">
+  <Head :title="` | ${props.phone.nama} Detail`"/>
+<div class="flex flex-col lg:flex-row space-x-8">
      
-      <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border me-auto mb-6 p-1">
+      <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-1">
          
                           <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
                           <div class="flex justify-center">
@@ -98,9 +96,9 @@ onUnmounted(() => {
                            
                             <div class="flex flex-row justify-start">
                                         
-                                <Link v-if="user" :href="route('phones.edit', {'id': phone.id})" class="text-sm md:text-base m-3 bg-yellow-500 p-3 rounded">Ubah</Link>
+                                <Link v-if="user?.role == 'admin'" :href="route('phones.edit', {'id': phone.id})" class="text-sm md:text-base m-3 bg-yellow-500 p-3 rounded">Ubah</Link>
                                 <Link :href="route('phones.compare', {'phone1': props.phone.nama, 'phone2': ''})" class="text-sm md:text-base m-3 bg-green-500 p-3 rounded text-white">Bandingkan</Link>
-                                <button v-if="user" class="text-sm md:text-base m-3 bg-red-500 p-3 rounded text-white" @click="deletePhone(phone.id)">Hapus</button>        
+                                <button v-if="user?.role == 'admin'" class="text-sm md:text-base m-3 bg-red-500 p-3 rounded text-white" @click="deletePhone(phone.id)">Hapus</button>        
                                       
                             </div>
                        
@@ -147,17 +145,19 @@ onUnmounted(() => {
                     
               
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col space-y-">
         
           <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border p-2">
      
        
-            <p class="font-bold text-xl md:text-2xl text-red-500">Komentar</p>
+            <p class="font-bold text-xl md:text-2xl text-red-500 ">Komentar</p>
             <div v-if="authUser">
               <CommentForm :phone-id="phoneId"/>                     
             </div>
+            
               <div v-else>Login untuk menulis komentar</div> 
-            <CommentList :comments="props.comments"/>
+              
+            <CommentList :comments="props.comments" />
  
           </div>
           <Brand></Brand>

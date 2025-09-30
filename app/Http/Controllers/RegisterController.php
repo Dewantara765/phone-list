@@ -6,6 +6,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -26,11 +27,13 @@ class RegisterController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         $newUser = User::create($validatedData);
+
+        event(new Registered($newUser));
         
-        $token = Auth::login($newUser);
+        Auth::login($newUser);
         
        
         $request->session()->flash('pesan','Daftar dan Login Akun berhasil');
-        return redirect()->route('phones.index');
+        return redirect()->route('login.success');
     }////
 }

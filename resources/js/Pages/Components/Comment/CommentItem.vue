@@ -18,7 +18,7 @@ function deleteComment() {
 </script>
 
 <template>
-    <div>
+    <div class="mb-5">
         <p class="font-semibold">{{ comment.user.username }}</p>
          <span v-if="!expanded && comment.body.length > maxLength">
         {{ comment.body.slice(0, maxLength) }}...
