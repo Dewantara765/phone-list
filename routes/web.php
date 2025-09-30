@@ -8,7 +8,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\EmailVerificationController;
 
 // Route::inertia('/','Home')->name('home');
 
@@ -19,11 +18,6 @@ Route::get('/', [PhoneController::class, 'index'])
 ->name('phones.index');
 
 Route::get('/phones/create', [PhoneController::class, 'create'])->name('phones.create')->middleware('auth');
-
-Route::get('/loginsuccess', function(){
-    return Inertia::render('LoginSuccess');
-})->middleware(['auth','verified'])
-->name('login.success');
 
 Route::inertia('/about', 'About', ['user' => 'Dewantara'])->name('about');
 
@@ -65,8 +59,6 @@ Route::post('/signup', [RegisterController::class, 'store'])->name('signup.store
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-
 
 
 

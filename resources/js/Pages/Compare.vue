@@ -31,8 +31,6 @@ function autoComplete(){
     if(form.phone1.length > 2){
 
         axios.get('/autocomplete/search',{params: {phone1: form.phone1}}).then(response => {
-       
-       
         data_results.value = response.data;
 
  });
@@ -49,8 +47,6 @@ function autoComplete2(){
 if(form.phone2.length > 2 ){
 
     axios.get('/autocomplete/search',{params: {phone1: form.phone2}}).then(response => {
-   
-   
     data_results2.value = response.data;
 
 });
