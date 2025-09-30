@@ -8,7 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\EmailVerificationController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 // Route::inertia('/','Home')->name('home');
 
 
@@ -17,7 +18,14 @@ use App\Http\Controllers\CommentController;
 Route::get('/', [PhoneController::class, 'index'])
 ->name('phones.index');
 
-Route::get('/phones/create', [PhoneController::class, 'create'])->name('phones.create')->middleware('auth');
+Route::get('/loginsuccess', function(){
+    return Inertia::render('LoginSuccess');
+})->middleware(['auth','verified'])
+->name('login.success');
+
+
+
+Route::get('/phones/create', [PhoneController::class, 'create'])->name('phones.create')->middleware(['auth', 'verified']);
 
 Route::inertia('/about', 'About', ['user' => 'Dewantara'])->name('about');
 
@@ -62,24 +70,28 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
-
-
 Route::get('/phones/{phone}/edit', [PhoneController::class,'edit'])
-    ->name('phones.edit')->middleware('auth');
+    ->name('phones.edit')->middleware(['auth', 'verified']);
 
 Route::put('/phones/{phone}', [PhoneController::class,'update'])
-    ->name('phones.update')->middleware('auth');
+    ->name('phones.update')->middleware(['auth', 'verified']);
 
 Route::delete('/phone/{phone}', [PhoneController::class,'destroy'])
-    ->name('phones.destroy')->middleware('auth');
+    ->name('phones.destroy')->middleware(['auth', 'verified']);
 
-Route::post('/phones/{phone}/comments', [CommentController::class, 'store'])->name('phones.comments.store')->middleware('auth');
+Route::post('/phones/{phone}/comments', [CommentController::class, 'store'])->name('phones.comments.store')->middleware(['auth', 'verified']);
 
 
-Route::post('/add',[PhoneController::class, 'store'])->name('phones.store')->middleware('auth');
+Route::post('/add',[PhoneController::class, 'store'])->name('phones.store')->middleware(['auth', 'verified']);
 
-Route::post('/phones/{phone}/like', [LikeController::class, 'toggle'])->middleware('auth');
+Route::post('/phones/{phone}/like', [LikeController::class, 'toggle'])->middleware(['auth', 'verified']);
 
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])
-    ->middleware('auth')
+    ->middleware(['auth', 'verified'])
     ->name('comments.destroy');
+
+Route::get('/email/verify', [EmailVerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'handler'])->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');

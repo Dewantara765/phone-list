@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Phone;
 use Illuminate\Http\Request;
-use App\Events\PhoneLiked;
+
 
 class LikeController extends Controller
 {
@@ -24,7 +24,7 @@ class LikeController extends Controller
         }
 
         $likeCount = $phone->likes()->count();
-        broadcast(new PhoneLiked($phone->id, $likeCount))->toOthers();
+       
         
         return response()->json([
         'liked' => $liked,

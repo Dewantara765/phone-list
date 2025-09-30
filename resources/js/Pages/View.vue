@@ -9,7 +9,6 @@ import CameraRow2 from './Components/CameraRow2.vue';
 import CommentForm from './Components/Comment/CommentForm.vue';
 import CommentList from './Components/Comment/CommentList.vue';
 import Brand from './Brand.vue';
-import { onMounted, onUnmounted } from 'vue';
 import { provide } from 'vue';
 
 const props = defineProps({
@@ -71,21 +70,13 @@ function submitComment() {
   })
 }
 
-onMounted(() => {
-  window.Echo.channel(`phone.${props.phoneId}`)
-    .listen('PhoneLiked', (e) => {
-      likeCount.value = e.likeCount
-    })
-})
 
-onUnmounted(() => {
-  window.Echo.leave(`phone.${props.phoneId}`)
-})
 
 </script>
 <template>
-  <Head :title="`| ${props.phone.nama}`"/> 
+   
 <div class="flex flex-col lg:flex-row">
+  <Head :title="` | Detail ${props.phone.nama}` "/>
      
       <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border me-auto mb-6 p-1">
          
@@ -98,9 +89,9 @@ onUnmounted(() => {
                            
                             <div class="flex flex-row justify-start">
                                         
-                                <Link v-if="user" :href="route('phones.edit', {'id': phone.id})" class="text-sm md:text-base m-3 bg-yellow-500 p-3 rounded">Ubah</Link>
+                                <Link v-if="user?.role === 'admin'" :href="route('phones.edit', {'id': phone.id})" class="text-sm md:text-base m-3 bg-yellow-500 p-3 rounded">Ubah</Link>
                                 <Link :href="route('phones.compare', {'phone1': props.phone.nama, 'phone2': ''})" class="text-sm md:text-base m-3 bg-green-500 p-3 rounded text-white">Bandingkan</Link>
-                                <button v-if="user" class="text-sm md:text-base m-3 bg-red-500 p-3 rounded text-white" @click="deletePhone(phone.id)">Hapus</button>        
+                                <button v-if="user?.role === 'admin'" class="text-sm md:text-base m-3 bg-red-500 p-3 rounded text-white" @click="deletePhone(phone.id)">Hapus</button>        
                                       
                             </div>
                        
