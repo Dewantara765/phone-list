@@ -34,4 +34,7 @@ Ini adalah project web app list smartphone yang dikembangkan menggunakan Vue.js,
 9. Jika project belum bisa berjalan anda bisa cek ```ipconfig``` lalu ganti dengan IP anda di file ```vite.config.js```
 10. Image hp anda bisa cari sendiri di internet. Anda bisa gunakan fitur "Ubah" di web nya untuk mengupload gambar
 11. Untuk verifikasi email anda bisa menggunakan email asli.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9f102cb (readme)
