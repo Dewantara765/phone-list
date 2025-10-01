@@ -40,7 +40,7 @@ const user = computed(() => usePage().props.user);
             v-model="filters"
             placeholder="Search..." 
             class="px-4 py-2 border rounded-md w-70"/>
-             <Link v-if="user" :href="route('phones.create')" class="bg-sky-500 p-3 m-3 rounded-md text-white w-30">Tambah data</Link>
+             <Link v-if="user?.role == 'admin'" :href="route('phones.create')" class="bg-sky-500 p-3 m-3 rounded-md text-white w-30">Tambah data</Link>
         </div>
            
             <Head v-if="brand" :title="` | All ${props.brand} phones`"/>

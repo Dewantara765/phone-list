@@ -6,6 +6,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -28,6 +29,8 @@ class RegisterController extends Controller
         
 
         $newUser = User::create($validatedData);
+
+        event(new Registered($newUser));
         
         $token = Auth::login($newUser);
         
