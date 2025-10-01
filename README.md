@@ -4,7 +4,7 @@
 Ini adalah project web app list smartphone yang dikembangkan menggunakan Vue.js, Inertia.js, Laravel, Tailwind CSS (VILT)
 
 ## Cara Run Project ini di Local
-1. Gunakan XAMPP atau software sejenisnya jika anda memakai Windows/MacOS. Jika anda menggunakan Linux, anda bisa setup manual untuk web server, PHP, dan databasenya.
+1. Gunakan [XAMPP](https://www.apachefriends.org/) atau software sejenisnya jika anda memakai Windows/MacOS. Jika anda menggunakan Linux, anda bisa setup manual untuk web server, PHP, dan databasenya.
 
 2. Siapkan file .env bisa lihat contohnya di .env.example .
 
