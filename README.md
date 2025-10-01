@@ -26,4 +26,12 @@ Ini adalah project web app list smartphone yang dikembangkan menggunakan Vue.js,
     php artisan serve --host=0.0.0.0
     npm run dev
 ```
-8. Jika project belum bisa berjalan anda bisa cek ```ipconfig``` lalu ganti dengan IP anda di file ```vite.config.js```
+8. 2 command ini untuk migrate dan seed database anda (buat database dlu di PHPMyAdmin/manager database yang anda gunakan lalu set di .env)
+   ```bash
+      php artisan migrate
+      php artisan db:seed 
+   ```
+9. Jika project belum bisa berjalan anda bisa cek ```ipconfig``` lalu ganti dengan IP anda di file ```vite.config.js```
+10. Image hp anda bisa cari sendiri di internet. Anda bisa gunakan fitur "Ubah" di web nya untuk mengupload gambar
+11. Untuk verifikasi email anda bisa menggunakan email asli.
+
