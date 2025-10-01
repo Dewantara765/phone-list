@@ -18,7 +18,10 @@ const props = defineProps({
     likedByUser: Boolean,
     likeCountInitial: Number,
     authUser: Object || null,
+    nama: String,
 });
+
+const nama = props.nama;
 
 const isAuth  = computed(() => usePage().props.auth);
 
@@ -76,7 +79,7 @@ function submitComment() {
 <template>
    
 <div class="flex flex-col lg:flex-row">
-  <Head :title="` | Detail ${props.phone.nama}` "/>
+  <Head :title="` | ${nama} Detail` "/>
      
       <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border me-auto mb-6 p-1">
          
@@ -143,11 +146,12 @@ function submitComment() {
           <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border p-2">
      
        
-            <p class="font-bold text-xl md:text-2xl text-red-500">Komentar</p>
+            <p class="font-bold text-xl p-2 md:text-2xl text-red-500">Komentar</p>
             <div v-if="authUser">
               <CommentForm :phone-id="phoneId"/>                     
             </div>
               <div v-else>Login untuk menulis komentar</div> 
+              
             <CommentList :comments="props.comments"/>
  
           </div>

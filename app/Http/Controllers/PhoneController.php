@@ -95,7 +95,7 @@ class PhoneController extends Controller
      */
     public function show(Phone $phone)
     {
-         $comments = $phone->comments()->with('user')->latest()->get();
+         $comments = $phone->comments()->with('user')->latest()->paginate(5)->withQueryString();
          
         return Inertia::render(
             'View',
@@ -106,6 +106,7 @@ class PhoneController extends Controller
                 'likeCountInitial' => $phone->likes()->count(),
                 'authUser' => auth()->user(),
                 'comments' => $comments,
+                'nama' => $phone->nama,
                 
                
                 
