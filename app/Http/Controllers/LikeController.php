@@ -24,7 +24,7 @@ class LikeController extends Controller
         }
 
         $likeCount = $phone->likes()->count();
-        broadcast(new PhoneLiked($phone->id, $likeCount))->toOthers();
+      
         
         return response()->json([
         'liked' => $liked,
