@@ -13,12 +13,6 @@ function goTo(url) {
   }
   
 }
-
-function goTo(url) {
-  if (url) {
-    router.get(url, {}, { preserveScroll: true, preserveState: true })
-  }
-}
 </script>
 
 <template>
