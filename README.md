@@ -1,3 +1,4 @@
+
 ## Tentang Project ini
 
 Ini adalah project web app list smartphone yang dikembangkan menggunakan Vue.js, Inertia.js, Laravel, Tailwind CSS (VILT)
@@ -36,4 +37,4 @@ Ini adalah project web app list smartphone yang dikembangkan menggunakan Vue.js,
       php artisan db:seed 
    ```
 10. Jika project belum bisa berjalan anda bisa cek ```ipconfig``` lalu ganti dengan IP anda di file ```vite.config.js```
-11. Untuk verifikasi email anda harus menggunakan email asli (untuk pengirim). Sedangkan, untuk penerima (saat register akun) anda boleh memakai email sementara (karena fungsinya hanya untuk menerima inbox).
+11. Untuk verifikasi email anda harus menggunakan email asli (untuk pengirim). Sedangkan, untuk penerima (saat register akun) anda boleh memakai email sementara (karena fungsinya hanya untuk menerima inbox)
