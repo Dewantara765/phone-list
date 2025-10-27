@@ -27,13 +27,17 @@ class RegisterController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         
-
+    
         $newUser = User::create($validatedData);
 
         event(new Registered($newUser));
         
-        $token = Auth::login($newUser);
+        Auth::login($newUser);
         
+        if (! $request->user()->hasVerifiedEmail()) {
+        return redirect()->route('verification.notice')
+            ->with('pesan', 'Silakan verifikasi email Anda sebelum melanjutkan.');
+    }
        
         $request->session()->flash('pesan','Daftar dan Login Akun berhasil');
         return redirect()->route('phones.index');

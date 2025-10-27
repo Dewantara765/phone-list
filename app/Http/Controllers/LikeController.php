@@ -10,6 +10,9 @@ class LikeController extends Controller
 {
     public function toggle(Phone $phone)
     {
+        if (!auth()->check()) {
+        return response()->json(['message' => 'Unauthorized'], 403);
+    }
      
         $user = auth()->user();
    
@@ -31,18 +34,5 @@ class LikeController extends Controller
         'like_count' => $phone->likes()->count(),
     ]);
 
-       
-
-        // //return Inertia::render(
-        //     'View',
-        //     [
-        //         'liked' => $,
-        //         'active' => 'brand',
-        //         'phoneId' => $phone->id,
-        //         'likedByUser' => $phone->isLikedBy(auth()->user()),
-        //         'likeCountInitial' => $phone->likes()->count(),
-                
-        //     ]
-        // );
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\EmailVerificationController;
 
 // Route::inertia('/','Home')->name('home');
 
@@ -76,7 +77,7 @@ Route::post('/phones/{phone}/comments', [CommentController::class, 'store'])->na
 
 Route::post('/add',[PhoneController::class, 'store'])->name('phones.store')->middleware(['auth', 'verified']);
 
-Route::post('/phones/{phone}/like', [LikeController::class, 'toggle'])->middleware(['auth', 'verified']);
+Route::post('/phones/{phone}/like', [LikeController::class, 'toggle'])->middleware(['auth']);
 
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])
     ->middleware(['auth', 'verified'])
@@ -84,6 +85,10 @@ Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])
 
 Route::get('/email/verify', [EmailVerificationController::class, 'notice'])->middleware('auth')->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'handler'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'handler'])->middleware(['auth', 'signed', 'throttle:6,1'])->name('verification.verify');
 
 Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/loginSuccess', function () {
+    return Inertia::render('LoginSuccess');
+})->name('login.success');

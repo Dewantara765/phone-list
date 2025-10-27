@@ -56,7 +56,9 @@ const toggleLike = async () => {
   }
 
   try {
-    const res = await axios.post(`/phones/${props.phoneId}/like`)
+    const res = await axios.post(`/phones/${props.phoneId}/like`,
+      {}, {withCredentials: true}
+    )
     liked.value = res.data.liked
     likeCount.value = res.data.like_count
   } catch (err) {
