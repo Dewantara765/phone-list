@@ -72,10 +72,10 @@ Route::put('/phones/{phone}', [PhoneController::class,'update'])
 Route::delete('/phone/{phone}', [PhoneController::class,'destroy'])
     ->name('phones.destroy')->middleware(['auth', 'verified']);
 
-Route::post('/phones/{phone}/comments', [CommentController::class, 'store'])->name('phones.comments.store')->middleware(['auth', 'verified']);
+Route::post('/phones/{phone}/comments', [CommentController::class, 'store'])->name('phones.comments.store')->middleware(['auth']);
 
 
-Route::post('/add',[PhoneController::class, 'store'])->name('phones.store')->middleware(['auth', 'verified']);
+Route::post('/add',[PhoneController::class, 'store'])->name('phones.store')->middleware(['auth']);
 
 Route::post('/phones/{phone}/like', [LikeController::class, 'toggle'])->middleware(['auth']);
 

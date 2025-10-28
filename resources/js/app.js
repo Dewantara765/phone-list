@@ -14,12 +14,15 @@ createInertiaApp({
     return page;
   },
   setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
+    const application =createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(ZiggyVue)
       .component('Head', Head)
       .component('Link', Link)
       .mount(el)
+      delete el.dataset.page;
+
+    return application;
   },
   progress: {
     // // The delay after which the progress bar will appear, in milliseconds...
