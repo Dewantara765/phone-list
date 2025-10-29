@@ -16,10 +16,7 @@ import debounce from 'lodash/debounce';
     'font-semibold md:text-white' : props.active != "home"
  }))
 
- const activeNavBrand = computed(() => ({
-    'font-bold text-yellow-500 md:bg-white p-3' : props.active === "brand",
-    'font-semibold md:text-white' : props.active != "brand"
- }))
+
 
  const activeNavCompare = computed(() => ({
     'font-bold text-yellow-500 md:bg-white p-3' : props.active === "compare",

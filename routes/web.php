@@ -35,7 +35,7 @@ Route::get('/brand/{brand}', function (String $brand) {
     return Inertia::render('Home',[
         'phones' => $phones,
         'brand' => $brand,
-        'active' => 'brand',
+        'active' => 'home',
     ]);
 });
 
