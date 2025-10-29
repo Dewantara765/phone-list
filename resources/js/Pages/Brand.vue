@@ -4,9 +4,9 @@ import Button from './Components/Button.vue'
 <template>
 <div>
     <Head :title="` | ${$page.component} List`"/>
-    <div class="sm:w-xl md:w-2xl">
+    <div class="w-[300px]">
     <p class="text-xl font-bold  lg:block">List Brand</p>
-    <div class="w-sm lg:w-xl p-2 flex flex-row justify-start flex-wrap">
+    <div class="w-[250px] md:w-lg p-1 flex flex-row justify-start flex-wrap">
         <Button nama="Samsung"/>
         <Button nama="Xiaomi"/>
         <Button nama="Apple"/>

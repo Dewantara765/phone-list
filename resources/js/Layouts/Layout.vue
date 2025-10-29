@@ -76,10 +76,6 @@ const toggleMenu = () => {
            
             
             <div class="flex flex-col  md:flex md:flex-row md:space-x-4">
-                <!-- <form @submit.prevent="search" class="flex items-center">
-                    <input v-model="formSearch.keyword" type="text" placeholder="Search..." class="px-4 py-2 rounded-l-md" />
-                    <button type="submit" class="px-4 py-2 bg-yellow-300 text-black rounded-r-md">Cari</button>
-                </form> -->
                 
                     <div v-if="user">
                         <form @submit.prevent="logout" class="flex gap-2 items-center my-2 mx-4">

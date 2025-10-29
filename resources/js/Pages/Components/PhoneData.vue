@@ -42,7 +42,7 @@ const props = defineProps({
                          <PhoneRow :entity="'Video Belakang'"  :data="phone1.videobelakang" :height='"140px"'/>
                             <PhoneRow :entity="'Kamera Depan'"  :data="phone1.kameradepan" :height='"85px"'/>
                             <PhoneRow :entity="'Video Depan'"  :data="phone1.videodepan":height="'60px'"/>
-                            <PhoneRow :entity="'Speaker'"  :data="phone1.speaker" :height="'50px'"/>
+                            <PhoneRow :entity="'Speaker'"  :data="phone1.speaker" :height="'90px'"/>
                             <PhoneRow :entity="'3.5mm jack'"  :data="phone1.audiojack"/>
                             <PhoneRow :entity="'Konektivitas'"  :data="phone1.konektivitas" :height="'75px'"/>
                             <PhoneRow :entity="'Sensor'"  :data="phone1.sensor" :height='"120px"'/>
