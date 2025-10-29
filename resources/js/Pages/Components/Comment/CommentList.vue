@@ -1,11 +1,17 @@
 <script setup>
+import {ref, watch} from 'vue'
+import { usePage } from '@inertiajs/vue3';
 import CommentItem from './CommentItem.vue'; 
 import { router } from '@inertiajs/vue3';
+import Pagination from '../Pagination.vue';
 
 const props = defineProps({
     comments: Object,
     
 })
+
+const page = usePage();
+const comments = ref(props.comments);
 
 function goTo(url) {
   if (url) {
@@ -13,6 +19,20 @@ function goTo(url) {
   }
   
 }
+
+// const loadMore = () => {
+//   if(!comments.value.next_page_url) return;
+//   router.get(comments.value.next_page_url, {}, { 
+//     preserveScroll: true, 
+//     preserveState: true,
+//     onSuccess: (newPage) => {
+//       comments.value = {
+//         ...newPage.props.comments,
+//         data: [...comments.value.data, ...newPage.props.comments.data]
+//       }
+//     }
+//   })
+// }
 </script>
 
 <template>
@@ -20,22 +40,12 @@ function goTo(url) {
      
       
     <div v-if="comments">
-      <p class="text-lg text-red-500">{{ comments.total }} komentar</p>
+      <p class="text-lg text-red-500">{{ comments.total}} komentar</p>
       <div v-for="comment in comments.data" :key="comment.id" class="border-t pt-4 mt-4">
             <CommentItem :comment="comment"/>
       </div>
-      <!-- Pagination -->
-    <div class="flex space-x-2 mt-4">
-      <button
-        v-for="link in comments.links"
-        :key="link.label"
-        @click="goTo(link.url)"
-        v-html="link.label"
-        class="px-3 py-1 border rounded"
-        :class="{ 'bg-blue-500 text-white': link.active, 'opacity-50': !link.url }"
-        :disabled="!link.url"
-      />
-    </div>
+      <Pagination :links="comments.links" @click="goTo(url)" />
+      <!-- <button v-if="comments.next_page_url" @click="loadMore">Load more...</button> -->
     </div>
       <div v-else>Tidak ada komentar</div>
     </div>

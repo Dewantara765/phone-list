@@ -1,6 +1,8 @@
 <script setup>
 
-import { useForm } from '@inertiajs/vue3'
+import { useForm, router } from '@inertiajs/vue3'
+
+
 const props = defineProps({
   phoneId: Number,
 
@@ -10,9 +12,12 @@ const form2 = useForm({
   body: '',
 })
 
+
+
 function submitComment() {
   form2.post(route('phones.comments.store', props.phoneId), {
     onSuccess: () => form2.reset('body'),
+    preserveState: true,
     preserveScroll: true,
   })
 }
