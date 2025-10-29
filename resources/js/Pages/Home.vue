@@ -49,9 +49,8 @@ const user = computed(() => usePage().props.user);
          
 
           <p v-if="keyword" class="m-3 p-2">Menampilkan hasil untuk <b>{{ props.keyword }}</b></p>
-          <div class="relative text-align-center text-red-500 font-bold flex justify-center" v-if="brand">
-            <img :src="/image/+'brand/' + props.brand+'.jpg'" class="m-3 p-2 h-[400px] border-black border-2"/>
-            <div class="absolute bottom-20 sm:left-20 lg:left-150 text-2xl" style="text-shadow: 1px 1px 2px black;">All {{ props.brand }} phones </div>
+          <div class="m-3 text-red-500 font-bold text-2xl" v-if="brand">
+           <div>All {{ props.brand }} phones</div>
           </div>
 
           <p v-if="filters">Menampilkan hasil untuk <b>{{ filters }}</b></p>

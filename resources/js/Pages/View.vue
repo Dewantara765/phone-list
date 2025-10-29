@@ -23,7 +23,7 @@ const props = defineProps({
     nama: String,
 });
 
-const nama = props.nama;
+const title = computed(() => usePage().props.nama);
 
 const isAuth  = computed(() => usePage().props.auth);
 
@@ -64,7 +64,11 @@ const toggleLike = async () => {
   } catch (err) {
     if (err.response?.status === 401) {
       alert('Please log in first!')
-    } else {
+    }
+    else if (err.response?.status === 403) {
+      alert('verifikasi email anda terlebih dahulu!')
+    }
+     else {
       console.error(err)
     }
   }
@@ -89,8 +93,7 @@ function goTo(url) {
 <template>
    
 <div class="flex flex-col lg:flex-row gap-x-4">
-  <Head :title="` | Detail ${props.phone.nama}` "/>
-     
+  <Head :title="` | ${$props.phone.nama}`"/>
       <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2">
          
                           <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>

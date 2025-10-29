@@ -107,6 +107,7 @@ class PhoneController extends Controller
                 'authUser' => auth()->user(),
                 'comments' => $comments,
                 'nama' => $phone->nama,
+                'active' => 'home',
                 
                
                 
