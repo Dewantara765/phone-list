@@ -49,7 +49,7 @@ const user = computed(() => usePage().props.user);
          
 
           <p v-if="keyword" class="m-3 p-2">Menampilkan hasil untuk <b>{{ props.keyword }}</b></p>
-          <div class="m-3 text-red-500 font-bold text-2xl" v-if="brand">
+          <div class="m-3 text-red-500 font-bold text-xl md:text-2xl" v-if="brand">
            <div>All {{ props.brand }} phones</div>
           </div>
 
