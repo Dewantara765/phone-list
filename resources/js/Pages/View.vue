@@ -94,7 +94,7 @@ function goTo(url) {
    
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
   <Head :title="` | ${$props.phone.nama}`"/>
-      <div class="md:w-xl lg:w-2xl rounded overflow-hidden  mb-6 p-2 ">
+      <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
          
                           <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
                           <div class="flex justify-center">
@@ -156,7 +156,7 @@ function goTo(url) {
         </div>
         <div class="flex flex-col space-y-2">
         
-          <div class="md:w-xl lg:w-2xl rounded overflow-hidden  p-2">
+          <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border p-2">
      
        
             <p class="font-bold text-xl md:text-2xl text-red-500">Komentar</p>
