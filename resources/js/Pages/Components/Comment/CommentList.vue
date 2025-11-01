@@ -15,6 +15,14 @@ const allComments = ref([...props.comments.data])
 const nextPageUrl = ref(props.comments.next_page_url)
 const loading = ref(false)
 
+watch(
+  () => props.comments.data,
+  (newData) => {
+    allComments.value = [...newData]
+    nextPageUrl.value = props.comments.next_page_url
+  }
+)
+
 function loadMore() {
   if (!nextPageUrl.value) return
   loading.value = true
