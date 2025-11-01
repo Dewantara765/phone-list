@@ -100,7 +100,7 @@ function highlightDiff(str1, str2) {
 
 <template>
     <div class="w-full block m-3 p-3 cols-8 offset-8">
-        <Head :title="` | ${$page.component}` "/>
+        <Head :title="`${$page.component}` "/>
         
         <div class="flex flex-col  md:flex-row justify-center">
             <form>

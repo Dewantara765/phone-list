@@ -92,8 +92,8 @@ function goTo(url) {
 </script>
 <template>
    
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
-  <Head :title="` | ${$props.phone.nama}`"/>
+<div class="grid grid-cols-1 lg:grid-cols-2">
+  <Head :title="`${$page.props.phone.nama}`"/>
       <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
          
                           <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
