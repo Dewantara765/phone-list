@@ -39,6 +39,9 @@ class HandleInertiaRequests extends Middleware
            'user' => fn () => $request->user() ? 
                 $request->user()->only(['id', 'username', 'email', 'password', 'role'])
                 : null,
+           'flash' => [
+                'loginError' => fn () => $request->session()->get('loginError')
+            ],
           
         ]);
     }

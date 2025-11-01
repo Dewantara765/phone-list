@@ -2,6 +2,7 @@
 import Empty from '../Layouts/Empty.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import InputError from './Components/InputError.vue';
+import { ref } from 'vue';
 
 
 defineOptions({
@@ -12,6 +13,8 @@ const form = useForm({
     username: null,
     password: null,
 })
+
+const show = ref(true);
 
 const props = defineProps({
     errors: Object
@@ -28,6 +31,10 @@ const submit = () => {
     <div class="flex flex-row justify-center">
         <Head :title="` | Login` "/>
         <div class="w-2xl block m-3 p-3 border rounded-md">
+            <div v-if="$page.props.flash.loginError && show" class="p-3 mb-4 bg-red-100 flex justify-between text-red-700 rounded">
+                <div>{{ $page.props.flash.loginError }}</div>
+                <div @click="show = !show">x</div>
+            </div>
             <div class="flex flex-row justify-center">
                 <form @submit.prevent="submit">
                     <div class="m-5" style="font-size:30px; font-weight:bold;">
