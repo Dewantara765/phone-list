@@ -93,7 +93,7 @@ function goTo(url) {
 <template>
    
 <div class="grid grid-cols-1 xl:grid-cols-2">
-  <Head :title="`${$page.props.phone.nama}`"/>
+  <Head :title="`${props.nama}`"/>
       <div class="lg:w-xl xl:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
          
                           <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
@@ -161,7 +161,7 @@ function goTo(url) {
        
             <p class="font-bold text-xl md:text-2xl text-red-500">Komentar</p>
             <div v-if="authUser">
-              <CommentForm :phone-id="phoneId"/>                     
+              <CommentForm :phone-id="phoneId" :comments="props.comments"/>                     
             </div>
             
               <div v-else>Login untuk menulis komentar</div> 

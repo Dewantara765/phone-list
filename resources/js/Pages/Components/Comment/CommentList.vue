@@ -15,13 +15,13 @@ const allComments = ref([...props.comments.data])
 const nextPageUrl = ref(props.comments.next_page_url)
 const loading = ref(false)
 
-watch(
-  () => props.comments.data,
-  (newData) => {
-    allComments.value = [...newData]
-    nextPageUrl.value = props.comments.next_page_url
-  }
-)
+// watch(
+//   () => props.comments.data,
+//   (newData) => {
+//     allComments.value = [...newData]
+//     nextPageUrl.value = props.comments.next_page_url
+//   }
+// )
 
 function loadMore() {
   if (!nextPageUrl.value) return
@@ -31,12 +31,20 @@ function loadMore() {
     preserveScroll: true,
     preserveState: true,
     replace: false,
+
     onSuccess: (page) => {
       const newComments = page.props.comments.data
-      allComments.value.push(...newComments)
+      // Pastikan tidak ada duplikat sebelum push
+      const existingIds = new Set(allComments.value.map(c => c.id));
+      const filteredNewComments = newComments.filter(c => !existingIds.has(c.id));
+
+      allComments.value.push(...filteredNewComments)
       nextPageUrl.value = page.props.comments.next_page_url
       loading.value = false
     },
+    onError: () => {
+      loading.value = false;
+    }
   })
 }
 
