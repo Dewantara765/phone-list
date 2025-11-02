@@ -92,13 +92,13 @@ function goTo(url) {
 </script>
 <template>
    
-<div class="grid grid-cols-1 lg:grid-cols-2">
+<div class="grid grid-cols-1 xl:grid-cols-2">
   <Head :title="`${$page.props.phone.nama}`"/>
-      <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
+      <div class="lg:w-xl xl:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
          
                           <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
                           <div class="flex justify-center">
-                              <img :src="/image/ + props.phone.gambar" class="w-1/3 md:w-1/5 lg:w-1/2 xl:w-1/5"> 
+                              <img :src="/image/ + props.phone.gambar" class="w-1/3 md:w-1/5 lg:w-1/4"> 
                               
                           </div>
                           <Like  @toggle-like="toggleLike" :liked="liked" :like-count="likeCount" />
