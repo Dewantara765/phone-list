@@ -39,7 +39,7 @@ const props = defineProps({
                               <CameraRow :entity="'Depth'"  :data="phone1.depth"/>
                 
                             </li>
-                         <PhoneRow :entity="'Video Belakang'"  :data="phone1.videobelakang" :height='"140px"'/>
+                         <PhoneRow :entity="'Video Belakang'"  :data="phone1.videobelakang" :height='"170px"'/>
                             <PhoneRow :entity="'Kamera Depan'"  :data="phone1.kameradepan" :height='"85px"'/>
                             <PhoneRow :entity="'Video Depan'"  :data="phone1.videodepan":height="'60px'"/>
                             <PhoneRow :entity="'Speaker'"  :data="phone1.speaker" :height="'90px'"/>
