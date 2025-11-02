@@ -140,7 +140,7 @@ function goTo(url) {
                             <PhoneRow2 :entity="'Speaker'"  :data="props.phone.speaker"/>
                             <PhoneRow2 :entity="'3.5mm jack'"  :data="props.phone.audiojack"/>
                             <PhoneRow2 :entity="'Konektivitas'"  :data="props.phone.konektivitas"/>
-                            <PhoneRow2 :entity="'Sensor'"  :data="props.phone.sensor" :height='"70px"'/>
+                            <PhoneRow2 :entity="'Sensor'"  :data="props.phone.sensor" :height='"90px"'/>
                             <PhoneRow2 :entity="'Baterai'"  :data="`${props.phone.baterai} mAh`"/>
                             <PhoneRow2 :entity="'Charging'"  :data="props.phone.charging" :height='"70px"'/>
                             <PhoneRow2 :entity="'Harga'"  :data="props.phone.harga" :height='"150px"'/>
