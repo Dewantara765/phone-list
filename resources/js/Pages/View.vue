@@ -134,7 +134,7 @@ function goTo(url) {
                               <CameraRow2 :entity="'Depth'"  :data="props.phone.depth"/>
                 
                             </li>
-                            <PhoneRow2 :entity="'Video Belakang'"  :data="props.phone.videobelakang" :height='"100px"'/>
+                            <PhoneRow2 :entity="'Video Belakang'"  :data="props.phone.videobelakang" :height='"130px"'/>
                             <PhoneRow2 :entity="'Kamera Depan'"  :data="props.phone.kameradepan" :height='"75px"'/>
                             <PhoneRow2 :entity="'Video Depan'"  :data="props.phone.videodepan"/>
                             <PhoneRow2 :entity="'Speaker'"  :data="props.phone.speaker"/>

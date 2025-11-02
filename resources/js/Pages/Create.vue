@@ -96,13 +96,13 @@ const submit = () => {
                   <input type="text" id="berat" name="berat"v-model="form.berat">
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                      <label for="material" class="inline-block w-40 self-center">Material</label>
+                  <div class="input-textarea">
+                      <label for="material" class="label-textarea">Material</label>
                       <textarea id="material" name="material" cols="40" rows="5" wrap="hard" v-model="form.material"></textarea>
                   </div>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
+                  <div class="input-textarea">
                     <label for="layar" class="inline-block w-40">Layar</label>
                     <textarea id="layar" name="layar" cols="40" rows="5" wrap="hard" v-model="form.layar"></textarea>
                   </div>
@@ -113,41 +113,41 @@ const submit = () => {
                   <InputError :message="form.errors.os"/>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="soc" class="inline-block w-40">SoC</label>
+                  <div class="input-textarea">
+                    <label for="soc" class="label-textarea">SoC</label>
                     <textarea id="soc" name="soc" cols="40" rows="5" wrap="hard" v-model="form.soc"></textarea>
                   </div>
                   <InputError :message="form.errors.soc"/>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="ramstorage" class="inline-block w-40">RAM/Storage</label>
+                  <div class="input-textarea">
+                    <label for="ramstorage" class="label-textarea">RAM/Storage</label>
                     <textarea id="ramstorage" name="ramstorage" cols="20" rows="5" wrap="hard" v-model="form.ramstorage"></textarea>  
                 </div>
                   <InputError :message="form.errors.ramstorage"/>
                   </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="kamerautama" class="inline-block w-40">Kamera Utama</label>
+                  <div class="input-textarea">
+                    <label for="kamerautama" class="label-textarea">Kamera Utama</label>
                     <textarea id="kamerautama" name="kamerautama" cols="40" rows="5" wrap="hard"v-model="form.kamerautama"></textarea>
                   </div>
                   <InputError :message="form.errors.kamerautama"/>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="kameraultrawide" class="inline-block w-40">Kamera Ultrawide</label>
+                  <div class="input-textarea">
+                    <label for="kameraultrawide" class="label-textarea">Kamera Ultrawide</label>
                     <textarea id="kameraultrawide" name="kameraultrawide" cols="40" rows="5" wrap="hard" v-model="form.kameraultrawide"></textarea>
                   </div>
                 </div>
                 <div class="mb-3">
-                <div class="flex flex-row items-center">
-                    <label for="kameratelephoto" class="inline-block w-40">Kamera Telephoto</label>
+                <div class="input-textarea">
+                    <label for="kameratelephoto" class="label-textarea">Kamera Telephoto</label>
                     <textarea id="kameratelephoto" name="kameratelephoto" cols="40" rows="5" wrap="hard" v-model="form.kameratelephoto"></textarea>
                   </div>
                 </div>
                 <div class="mb-3">
-                <div class="flex flex-row items-center">
-                    <label for="kameraperiscope" class="inline-block w-40">Kamera Periscope</label>
+                <div class="input-textarea">
+                    <label for="kameraperiscope" class="label-textarea">Kamera Periscope</label>
                     <textarea id="kameraperiscope" name="kameraperiscope" cols="40" rows="5" wrap="hard" v-model="form.kameraperiscope"></textarea>
                   </div>
                 </div>
@@ -160,22 +160,22 @@ const submit = () => {
                   <input type="text" id="depth" name="depth" v-model="form.depth">
                 </div>
                 <div class="mb-3">
-                <div class="flex flex-row items-center">
-                    <label for="videobelakang" class="inline-block w-40">Video Belakang</label>
+                <div class="input-textarea">
+                    <label for="videobelakang" class="label-textarea">Video Belakang</label>
                     <textarea id="videobelakang" name="videobelakang" cols="40" rows="5" wrap="hard" v-model="form.videobelakang"></textarea>
                   </div>
                   <InputError :message="form.errors.videobelakang"/>
                 </div>
                 <div class="mb-3">
-                <div class="flex flex-row items-center">
-                    <label for="kameradepan" class="inline-block w-40">Kamera Depan</label>
+                <div class="input-textarea">
+                    <label for="kameradepan" class="label-textarea">Kamera Depan</label>
                     <textarea id="kameradepan" name="kameradepan" cols="40" rows="5" wrap="hard" v-model="form.kameradepan"></textarea>
                   </div>
                   <InputError :message="form.errors.kameradepan"/>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="videodepan" class="inline-block w-40">Video Depan</label>
+                  <div class="input-textarea">
+                    <label for="videodepan" class="label-textarea">Video Depan</label>
                     <textarea id="videodepan" name="videodepan" cols="40" rows="5" wrap="hard" v-model="form.videodepan"></textarea>
                   </div>
                   
@@ -191,15 +191,15 @@ const submit = () => {
                   <InputError :message="form.errors.audiojack"/>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="konektivitas" class="inline-block w-40">Konektivitas</label>
+                  <div class="input-textarea">
+                    <label for="konektivitas" class="label-textarea">Konektivitas</label>
                     <textarea id="konektivitas" name="konektivitas" cols="40" rows="5" wrap="hard" v-model="form.konektivitas"></textarea>
                   </div>
                   <InputError :message="form.errors.konektivitas"/>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="sensor" class="inline-block w-40">Sensor</label>
+                  <div class="input-textarea">
+                    <label for="sensor" class="label-textarea">Sensor</label>
                     <textarea id="sensor" name="sensor" cols="40" rows="5" wrap="hard" v-model="form.sensor"></textarea>
                   </div>
                   <InputError :message="form.errors.sensor"/>
@@ -210,14 +210,14 @@ const submit = () => {
                   <InputError :message="form.errors.baterai"/>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="charging" class="inline-block w-40">Charging</label>
+                  <div class="input-textarea">
+                    <label for="charging" class="label-textarea">Charging</label>
                     <textarea id="charging" name="charging" cols="40" rows="5" wrap="hard" v-model="form.charging"></textarea>
                   </div>
                 </div>
                 <div class="mb-3">
-                  <div class="flex flex-row items-center">
-                    <label for="harga" class="inline-block w-40">Harga</label>
+                  <div class="input-textarea">
+                    <label for="harga" class="label-textarea">Harga</label>
                     <textarea id="harga" name="harga" cols="40" rows="5" wrap="hard" v-model="form.harga"></textarea>
                   </div>
                 </div>
