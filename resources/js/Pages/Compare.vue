@@ -26,6 +26,20 @@ const hp2Exists = Object.keys(hp2).length !== 0
 const baterai1 = hp1?.baterai ? `${hp1.baterai} mAh` : '';
 const baterai2 = hp2?.baterai ? `${hp2.baterai} mAh` : '';
 
+const title = ref('')
+
+onMounted(() => {
+    if(hp1Exists && hp2Exists){
+        title.value = `Compare ${hp1.nama} and ${hp2.nama}`
+    } else if(hp1Exists){
+        title.value = `Compare ${hp1.nama} and`
+    } else if(hp2Exists){
+        title.value = `Compare ${hp2.nama} and`
+    }else {
+        title.value = 'Compare'
+    }
+})
+
 
 const form = useForm({
     phone1: props.phone1,
@@ -83,22 +97,7 @@ function setResult2(result) {
 
 }
 
-function highlightDiff(str1, str2) {
-    let maxLen = Math.max(str1.length, str2.length);
-      let res1 = "", res2 = "";
 
-      for (let i = 0; i < maxLen; i++) {
-        if (str1[i] !== str2[i]) {
-          res1 += str1[i] ? `<span class="text-red-500 font-bold">${str1[i]}</span>` : "";
-          res2 += str2[i] ? `<span class="text-green-500 font-bold">${str2[i]}</span>` : "";
-        } else {
-          res1 += str1[i] || "";
-          res2 += str2[i] || "";
-        }
-      }
-
-     return { str1: res1, str2: res2 };
-}
 
 
 </script>
@@ -106,7 +105,7 @@ function highlightDiff(str1, str2) {
 
 <template>
     <div class="w-full block m-3 p-3">
-        <Head :title="`${$page.component}` "/>
+        <Head :title="title"/>
         
         <div class="flex flex-col md:flex-row md:justify-center">
             <form>
@@ -140,10 +139,10 @@ function highlightDiff(str1, str2) {
             <tbody class="divide-y divide-gray-200">
                 <tr class="border-b-2 border-gray-400">
                     <td class="right-border w-1/2">
-                        <img v-if="hp1Exists" :src="/image/ + hp1.gambar" :alt="hp1.nama" class="w-5/6 md:w-1/4 my-2 mx-auto"/>
+                        <img v-if="hp1Exists" :src="/image/ + hp1.gambar" :alt="hp1.nama" class="w-2/3 md:w-1/4 my-2 mx-auto"/>
                     </td>
                     <td class="w-1/2">
-                        <img v-if="hp2Exists" :src="/image/ + hp2.gambar" :alt="hp2.nama" class="w-5/6 md:w-1/4 my-2 mx-auto"/>
+                        <img v-if="hp2Exists" :src="/image/ + hp2.gambar" :alt="hp2.nama" class="w-2/3 md:w-1/4 my-2 mx-auto"/>
                     </td>
                 </tr>
                 <TableRow :hp1="hp1" hp2="hp2" :value1="hp1.dimensi" :value2="hp2.dimensi" entity="Dimensi"/>
@@ -156,7 +155,7 @@ function highlightDiff(str1, str2) {
                 <tr class="border-b-2 border-gray-400 align-top text-xs md:text-base">
                     <td v-if="hp1" class="right-border w-1/2 break-words whitespace-normal p-2 ">
                         <span class="bold-entity-name">Kamera Belakang :</span><br>
-                        <span class="bold-entity-name">Kamera Utama : </span>{{ hp1.kamerautama}}<br>
+                        <span class="bold-entity-name">Kamera Utama : </span><span class="entity-value"><br>{{ hp1.kamerautama}}</span><br>
                         <TableCamera :value="hp1.kameraultrawide" name="Kamera Ultrawide"/>
                         <TableCamera :value="hp1.kameratelephoto" name="Kamera Telephoto"/>
                         <TableCamera :value="hp1.kameraperiscope" name="Kamera Periscope"/>
@@ -165,7 +164,7 @@ function highlightDiff(str1, str2) {
                     </td>
                     <td v-if="hp2" class="w-1/2 break-words whitespace-normal p-2">
                         <span class="bold-entity-name">Kamera Belakang :</span><br>
-                        <span class="bold-entity-name">Kamera Utama : </span>{{ hp2.kamerautama}}<br>
+                        <span class="bold-entity-name">Kamera Utama : </span><span class="entity-value"><br>{{ hp2.kamerautama}}</span><br>
                         <TableCamera :value="hp2.kameraultrawide" name="Kamera Ultrawide"/>
                         <TableCamera :value="hp2.kameratelephoto" name="Kamera Telephoto"/>
                         <TableCamera :value="hp2.kameraperiscope" name="Kamera Periscope"/>
@@ -188,7 +187,8 @@ function highlightDiff(str1, str2) {
             </tbody>
 
         </table>
-        <div v-if="Object.keys(hp1).length === 0 && Object.keys(hp2).length === 0">Tidak ada data...</div>
+        <div v-if="Object.keys(hp1).length === 0 && Object.keys(hp2).length === 0"
+        class="flex justify-center items-center">Tidak ada data...</div>
 
     </div>
     
