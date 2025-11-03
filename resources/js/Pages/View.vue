@@ -94,7 +94,7 @@ function goTo(url) {
   <Head :title="props.title"/>
       <div class="lg:w-xl xl:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
          
-                          <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
+                          <h4 class="font-bold text-xl md:text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
                           <div class="flex justify-center">
                               <img :src="/image/ + props.phone.gambar" class="w-1/3 md:w-1/5 lg:w-1/4"> 
                               
@@ -122,7 +122,7 @@ function goTo(url) {
                           
                           
                           
-                            <li class="border-gray-300 border-1 text-sm md:text-base"><span class="font-bold text-red-500 ml-5" >
+                            <li class="border-gray-300 border-1 text-sm md:text-base p-1.5"><span class="font-bold text-red-500 ml-5" >
                               Kamera Belakang :</span><br><span class="font-bold text-red-500 ml-5 text-sm md:text-base" style="color:red;">Kamera Utama :</span> {{props.phone.kamerautama }}
 
                               <CameraRow2 :entity="'Kamera Ultrawide'"  :data="props.phone.kameraultrawide"/>
