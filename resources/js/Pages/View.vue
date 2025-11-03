@@ -10,7 +10,6 @@ import CameraRow2 from './Components/CameraRow2.vue';
 import CommentForm from './Components/Comment/CommentForm.vue';
 import CommentList from './Components/Comment/CommentList.vue';
 import Brand from './Brand.vue';
-import { onMounted, onUnmounted } from 'vue';
 import { provide } from 'vue';
 
 const props = defineProps({
@@ -20,10 +19,9 @@ const props = defineProps({
     likedByUser: Boolean,
     likeCountInitial: Number,
     authUser: Object || null,
-    nama: String,
+    title: String,
 });
 
-const title = computed(() => usePage().props.nama);
 
 const isAuth  = computed(() => usePage().props.auth);
 
@@ -93,7 +91,7 @@ function goTo(url) {
 <template>
    
 <div class="grid grid-cols-1 xl:grid-cols-2">
-  <Head :title="`${props.nama}`"/>
+  <Head :title="props.title"/>
       <div class="lg:w-xl xl:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
          
                           <h4 class="font-bold text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
@@ -134,16 +132,16 @@ function goTo(url) {
                               <CameraRow2 :entity="'Depth'"  :data="props.phone.depth"/>
                 
                             </li>
-                            <PhoneRow2 :entity="'Video Belakang'"  :data="props.phone.videobelakang" :height='"130px"'/>
-                            <PhoneRow2 :entity="'Kamera Depan'"  :data="props.phone.kameradepan" :height='"75px"'/>
+                            <PhoneRow2 :entity="'Video Belakang'"  :data="props.phone.videobelakang"/>
+                            <PhoneRow2 :entity="'Kamera Depan'"  :data="props.phone.kameradepan"/>
                             <PhoneRow2 :entity="'Video Depan'"  :data="props.phone.videodepan"/>
                             <PhoneRow2 :entity="'Speaker'"  :data="props.phone.speaker"/>
                             <PhoneRow2 :entity="'3.5mm jack'"  :data="props.phone.audiojack"/>
                             <PhoneRow2 :entity="'Konektivitas'"  :data="props.phone.konektivitas"/>
-                            <PhoneRow2 :entity="'Sensor'"  :data="props.phone.sensor" :height='"90px"'/>
+                            <PhoneRow2 :entity="'Sensor'"  :data="props.phone.sensor"/>
                             <PhoneRow2 :entity="'Baterai'"  :data="`${props.phone.baterai} mAh`"/>
-                            <PhoneRow2 :entity="'Charging'"  :data="props.phone.charging" :height='"70px"'/>
-                            <PhoneRow2 :entity="'Harga'"  :data="props.phone.harga" :height='"150px"'/>
+                            <PhoneRow2 :entity="'Charging'"  :data="props.phone.charging"/>
+                            <PhoneRow2 :entity="'Harga'"  :data="props.phone.harga"/>
                         
                           </ul>
 

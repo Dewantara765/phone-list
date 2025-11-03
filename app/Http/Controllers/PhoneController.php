@@ -106,7 +106,7 @@ class PhoneController extends Controller
                 'likeCountInitial' => $phone->likes()->count(),
                 'authUser' => auth()->user(),
                 'comments' => $comments,
-                'nama' => $phone->nama,
+                'title' => $phone->nama,
                 'active' => 'home',
                 
                
