@@ -22,11 +22,18 @@
     }
 
     .bold-phone-name {
-        @apply text-red-500 font-semibold
+        @apply text-red-500 font-semibold text-lg md:text-xl lg:text-2xl
     }
 
     .right-border {
         @apply border-r-2 border-gray-400
+    }
+
+    .bold-entity-name {
+        @apply text-red-500 font-semibold text-sm md:text-base
+    }
+    .entity-value {
+        @apply text-sm md:text-base 
     }
 
 

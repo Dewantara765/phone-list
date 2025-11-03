@@ -14,16 +14,16 @@ const { hp1, hp2, entity, value1, value2 } = defineProps({
       v-if="hp1"
       class="right-border w-1/2 break-words whitespace-normal p-2"
     >
-      <span class="bold-phone-name">{{ entity }} :</span><br>
-      {{ value1 }}
+      <span class="bold-entity-name">{{ entity }} :</span><br>
+      <span class="entity-value">{{ value1 }}</span>
     </td>
 
     <td
       v-if="hp2"
       class="w-1/2 break-words whitespace-normal p-2"
     >
-      <span class="bold-phone-name">{{ entity }} :</span><br>
-      {{ value2 }}
+      <span class="bold-entity-name">{{ entity }} :</span><br>
+      <span class="entity-value">{{ value2 }}</span>
     </td>
   </tr>
 </template>

@@ -6,6 +6,6 @@ const props = defineProps({
 </script>
 
 <template>
-    <span v-if="props.value" class="bold-phone-name">{{ props.name }} : </span><br v-if="props.value">{{ props.value}}
+    <span v-if="props.value" class="bold-entity-name">{{ props.name }} : </span><br v-if="props.value"><span class="entity-value">{{ props.value}}</span>
     <br v-if="props.value">
 </template>

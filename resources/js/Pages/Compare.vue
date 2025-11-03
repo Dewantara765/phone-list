@@ -130,7 +130,7 @@ function highlightDiff(str1, str2) {
             </form>
         </div>
 
-        <table class="w-full border border-gray-400 table-fixed" v-if="hp1Exists || hp2Exists">
+        <table class="w-full md:w-5/6 lg:w-2/3 border border-gray-400 table-fixed mx-auto" v-if="hp1Exists || hp2Exists">
             <thead>
                 <tr>
                     <th class="right-border bold-phone-name w-1/2" v-if="hp1">{{ hp1.nama }}</th>
@@ -140,10 +140,10 @@ function highlightDiff(str1, str2) {
             <tbody class="divide-y divide-gray-200">
                 <tr class="border-b-2 border-gray-400">
                     <td class="right-border w-1/2">
-                        <img v-if="hp1Exists" :src="/image/ + hp1.gambar" :alt="hp1.nama" class="w-[100px] md:w-1/4 my-2 mx-auto"/>
+                        <img v-if="hp1Exists" :src="/image/ + hp1.gambar" :alt="hp1.nama" class="w-5/6 md:w-1/4 my-2 mx-auto"/>
                     </td>
                     <td class="w-1/2">
-                        <img v-if="hp2Exists" :src="/image/ + hp2.gambar" :alt="hp2.nama" class="w-[100px] md:w-1/4 my-2 mx-auto"/>
+                        <img v-if="hp2Exists" :src="/image/ + hp2.gambar" :alt="hp2.nama" class="w-5/6 md:w-1/4 my-2 mx-auto"/>
                     </td>
                 </tr>
                 <TableRow :hp1="hp1" hp2="hp2" :value1="hp1.dimensi" :value2="hp2.dimensi" entity="Dimensi"/>
@@ -155,8 +155,8 @@ function highlightDiff(str1, str2) {
                 <TableRow :hp1="hp1" hp2="hp2" :value1="hp1.ramstorage" :value2="hp2.ramstorage" entity="RAM/Storage"/>
                 <tr class="border-b-2 border-gray-400 align-top text-xs md:text-base">
                     <td v-if="hp1" class="right-border w-1/2 break-words whitespace-normal p-2 ">
-                        <span class="bold-phone-name">Kamera Belakang :</span><br>
-                        <span class="bold-phone-name">Kamera Utama : </span>{{ hp1.kamerautama}}<br>
+                        <span class="bold-entity-name">Kamera Belakang :</span><br>
+                        <span class="bold-entity-name">Kamera Utama : </span>{{ hp1.kamerautama}}<br>
                         <TableCamera :value="hp1.kameraultrawide" name="Kamera Ultrawide"/>
                         <TableCamera :value="hp1.kameratelephoto" name="Kamera Telephoto"/>
                         <TableCamera :value="hp1.kameraperiscope" name="Kamera Periscope"/>
@@ -164,8 +164,8 @@ function highlightDiff(str1, str2) {
                         <TableCamera :value="hp1.depth" name="Depth"/>
                     </td>
                     <td v-if="hp2" class="w-1/2 break-words whitespace-normal p-2">
-                        <span class="bold-phone-name">Kamera Belakang :</span><br>
-                        <span class="bold-phone-name">Kamera Utama : </span>{{ hp2.kamerautama}}<br>
+                        <span class="bold-entity-name">Kamera Belakang :</span><br>
+                        <span class="bold-entity-name">Kamera Utama : </span>{{ hp2.kamerautama}}<br>
                         <TableCamera :value="hp2.kameraultrawide" name="Kamera Ultrawide"/>
                         <TableCamera :value="hp2.kameratelephoto" name="Kamera Telephoto"/>
                         <TableCamera :value="hp2.kameraperiscope" name="Kamera Periscope"/>
