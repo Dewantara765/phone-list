@@ -90,7 +90,7 @@ function goTo(url) {
 </script>
 <template>
 <div class="grid grid-cols-1 xl:grid-cols-2">
-  <Head :title="` | ${props.phone.nama}`"/>
+    <Head :title="`${props.title}`"/>
       <div class="lg:w-xl xl:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
          
                           <h4 class="font-bold text-xl md:text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
@@ -151,6 +151,7 @@ function goTo(url) {
                     
               
         </div>
+
         <div class="flex flex-col space-y-2">
         
           <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border p-2">
