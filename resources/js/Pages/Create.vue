@@ -45,8 +45,10 @@ const form = useForm({
 
 
 const generateSlug = () => {
-    const phoneName = form?.nama.replaceAll(' ', '-');
-    form.slug = `${phoneName.toLowerCase()}-${props.count + 1}`;
+    
+    const phoneName = form.nama.replaceAll(' ', '-')
+    const phoneName2 = phoneName.replaceAll('+', '-plus')
+    form.slug = `${phoneName2.toLowerCase()}-${props.count + 1}`;
 }
 
 
