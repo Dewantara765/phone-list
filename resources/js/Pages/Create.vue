@@ -1,8 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useForm} from '@inertiajs/vue3';
 import InputError from './Components/InputError.vue';
 
+const props = defineProps({
+  count : Number,
+})
 
 
 let url = ref(null);
@@ -10,8 +13,8 @@ let url = ref(null);
 
 const form = useForm({
     gambar: null,
-    nama: null,
-    slug: null,
+    nama: '',
+    slug: '',
     brand: null,
     dimensi: null,
     berat: null,
@@ -38,6 +41,15 @@ const form = useForm({
     harga: null,
 
 })
+
+
+
+const generateSlug = () => {
+    const phoneName = form?.nama.replaceAll(' ', '-');
+    form.slug = `${phoneName.toLowerCase()}-${props.count + 1}`;
+}
+
+
 
 
 
@@ -74,12 +86,12 @@ const submit = () => {
                 </div>
                 <div class="mb-3">
                   <label for="nama" class="inline-block w-40">Nama</label>
-                  <input type="text" id="nama" name="nama" v-model="form.nama">
+                  <input type="text" id="nama" name="nama" v-model="form.nama" v-on:keyup="generateSlug">
                   <InputError :message="form.errors.nama"/>
                 </div>
                 <div class="mb-3">
                   <label for="slug" class="inline-block w-40">Slug</label>
-                  <input type="text" id="slug" name="slug" v-model="form.slug">
+                  <input type="text" id="slug" name="slug"  v-model="form.slug">
                   <InputError :message="form.errors.slug"/>
                 </div>
                 <div class="mb-3">

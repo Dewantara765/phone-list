@@ -31,8 +31,11 @@ class PhoneController extends Controller
      */
     public function create()
     {
+        $phone = Phone::all();
+        $count = $phone->count();
         return Inertia::render('Create', [
             'active' => 'home',
+            'count' => $count,
         ]);
     }
 
