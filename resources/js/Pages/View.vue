@@ -89,13 +89,13 @@ function goTo(url) {
 
 </script>
 <template>
-<div class="grid grid-cols-1 xl:grid-cols-2">
-    <Head :title="`${props.title}`"/>
-      <div class="lg:w-xl xl:w-2xl rounded overflow-hidden border-gray-600 border mb-6 p-2 ">
+<div class="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-5">
+    <Head :title="`${props.title} Detail`"/>
+      <div class=" rounded overflow-hidden border-gray-600 border mb-6 mx-8 p-2 ">
          
                           <h4 class="font-bold text-xl md:text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
                           <div class="flex justify-center">
-                              <img :src="/image/ + props.phone.gambar" class="w-1/3 md:w-1/5 lg:w-1/4"> 
+                              <img :src="/image/ + props.phone.gambar" class="w-30 lg:w-40"> 
                               
                           </div>
                           <Like  @toggle-like="toggleLike" :liked="liked" :like-count="likeCount" />
@@ -152,9 +152,9 @@ function goTo(url) {
               
         </div>
 
-        <div class="flex flex-col space-y-2">
+        <div class=" ">
         
-          <div class="md:w-xl lg:w-2xl rounded overflow-hidden border-gray-600 border p-2">
+          <div class="rounded overflow-hidden border-gray-600 border p-2">
      
        
             <p class="font-bold text-xl md:text-2xl text-red-500">Komentar</p>

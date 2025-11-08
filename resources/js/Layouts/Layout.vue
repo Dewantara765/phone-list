@@ -46,7 +46,7 @@ const toggleMenu = () => {
 </script>
 <template>
 <div class="bg-indigo-600">
-        <nav class="container px-5 py-3 md:flex md:justify-center space-x-4 md:items-center">
+        <nav class="px-5 py-3 md:flex md:justify-center space-x-4 md:items-center">
             <div class="flex items-center justify-between">
                 <router-link to="/" class="text-xl font-bold text-gray-100 md:text-2xl hover:text-indigo-400">Phone List
                 </router-link>
