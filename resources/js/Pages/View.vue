@@ -89,7 +89,7 @@ function goTo(url) {
 
 </script>
 <template>
-<div class="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-5">
+<div class="grid grid-cols-1 xl:grid-cols-[1.3fr_1fr] gap-5">
     <Head :title="`${props.title} Detail`"/>
       <div class=" rounded overflow-hidden border-gray-600 border mb-6 mx-8 p-2 ">
          
