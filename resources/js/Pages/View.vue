@@ -92,13 +92,12 @@ function goTo(url) {
 <div class="grid grid-cols-1 xl:grid-cols-[1.3fr_1fr] gap-5">
     <Head :title="`${props.title} Detail`"/>
       <div class=" rounded overflow-hidden border-gray-600 border mb-6 mx-8 p-2 ">
-         
-                          <h4 class="font-bold text-xl md:text-2xl text-red-500 text-center">{{ props.phone.nama }}</h4>
+                          <h4 class="font-bold text-xl md:text-2xl text-white text-center">{{ props.phone.nama }}</h4>
                           <div class="flex justify-center">
                               <img :src="/image/ + props.phone.gambar" class="w-30 lg:w-40"> 
                               
                           </div>
-                          <Like  @toggle-like="toggleLike" :liked="liked" :like-count="likeCount" />
+                          <Like class="text-white"  @toggle-like="toggleLike" :liked="liked" :like-count="likeCount" />
                            
                             <div class="flex flex-row  justify-start flex-wrap">
                                         
@@ -107,6 +106,7 @@ function goTo(url) {
                                 <button v-if="user?.role == 'admin'" class="text-sm md:text-base m-3 bg-red-500 p-3 rounded text-white" @click="deletePhone(phone.id)">Hapus</button>        
                                       
                             </div>
+              
                        
                           
                           <ul class="border-t-1 border-l-1 border-r-1 border-gray-300">

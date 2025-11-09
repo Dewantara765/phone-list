@@ -18,7 +18,7 @@ class PhoneController extends Controller
     public function index()
     {
         $phones = Phone::select("*")
-        ->orderBy('updated_at', 'desc')
+        ->orderBy('created_at', 'desc')
         ->orderBy('id','desc')->paginate(5)->onEachSide(1);
         return Inertia::render('Home', [
             'phones' => $phones,
