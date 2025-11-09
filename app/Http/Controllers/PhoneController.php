@@ -214,13 +214,13 @@ class PhoneController extends Controller
         
         $phones = Phone::when($q, function ($query, $q) {
             $query->where('nama', 'like', '%' . $q . '%')
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->orderBy('id','desc');
         })->paginate(5)->onEachSide(1)->withQueryString();
 
         if(empty($q)){
             $phones = Phone::select("*")
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->orderBy('id','desc')->paginate(5)->onEachSide(1);
         }
 
