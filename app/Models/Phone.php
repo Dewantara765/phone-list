@@ -12,7 +12,7 @@ class Phone extends Model
     public $fillable = ['gambar', 'nama', 'slug','brand','dimensi','berat',
     'material','layar','os','soc','ramstorage','kamerautama','kameraultrawide',
     'kameratelephoto','kameraperiscope','makro','depth','kameradepan','videobelakang', 'videodepan','speaker',
-    'audiojack','konektivitas','sensor','baterai','charging','harga'];
+    'audiojack','konektivitas','sensor','baterai','charging','harga', 'backgroundSize', 'backgroundPosition'];
         protected $guarded = ['id'] ;//
     
         public function likes()

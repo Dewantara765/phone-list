@@ -39,7 +39,8 @@ const form = useForm({
     baterai: null,
     charging: null,
     harga: null,
-
+    backgroundSize : '3000%',
+    backgroundPosition : '90% 15%'
 })
 
 
@@ -234,6 +235,16 @@ const submit = () => {
                     <label for="harga" class="label-textarea">Harga</label>
                     <textarea id="harga" name="harga" cols="40" rows="5" wrap="hard" v-model="form.harga"></textarea>
                   </div>
+                </div>
+                 <div class="mb-3">
+                  <label for="backgroundSize" class="inline-block w-40">background Size</label>
+                  <input type="text" id="backgroundSize" name="backgroundSize" v-model="form.backgroundSize">
+                  <InputError :message="form.errors.backgroundSize"/>
+                </div>
+                 <div class="mb-3">
+                  <label for="backgroundPosition" class="inline-block w-40">background Position</label>
+                  <input type="text" id="backgroundPosition" name="backgroundPosition" v-model="form.backgroundPosition">
+                  <InputError :message="form.errors.backgroundSize"/>
                 </div>
                 <button type="submit" class="bg-sky-500 hover:bg-gray-300 p-3 m-4 rounded text-white">Tambah</button>
         </form>

@@ -2,6 +2,7 @@
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
+import InputError from './Components/InputError.vue';
 
 const props = defineProps({
     phone : Object,
@@ -43,6 +44,8 @@ const form = useForm({
     baterai: props.phone.baterai,
     charging: props.phone.charging,
     harga: props.phone.harga,
+    backgroundSize: props.phone.backgroundSize,
+    backgroundPosition: props.phone.backgroundPosition
 
 })
 
@@ -223,6 +226,16 @@ function previewImage(e) {
                     <label for="harga" class="inline-block w-40">Harga</label>
                     <textarea id="harga" name="harga" cols="40" rows="5" wrap="hard" v-model="form.harga"></textarea>
                   </div>
+                </div>
+                <div class="mb-3">
+                  <label for="backgroundSize" class="inline-block w-40">background Size</label>
+                  <input type="text" id="backgroundSize" name="backgroundSize" v-model="form.backgroundSize">
+                  <InputError :message="form.errors.backgroundSize"/>
+                </div>
+                 <div class="mb-3">
+                  <label for="backgroundPosition" class="inline-block w-40">background Position</label>
+                  <input type="text" id="backgroundPosition" name="backgroundPosition" v-model="form.backgroundPosition">
+                  <InputError :message="form.errors.backgroundSize"/>
                 </div>
                 <button type="submit" class="bg-sky-500 hover:bg-gray-300 p-3 m-4 rounded text-white">Simpan</button>
         </form>
